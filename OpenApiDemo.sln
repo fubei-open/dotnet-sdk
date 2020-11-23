@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApiDemo", "OpenApiDemo\OpenApiDemo.csproj", "{A986588A-A02A-4149-AD5B-81D4B40854DC}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Com.Fubei.Api.OpenApi", "Com.Fubei.Api.OpenApi\Com.Fubei.Api.OpenApi.shproj", "{15F22972-A7A0-41AF-8896-E76A87FAAA0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Fubei.Galileo.Lite", "Com.Fubei.Galileo.Lite\Com.Fubei.Galileo.Lite.csproj", "{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Com.Fubei.Api.OpenApi\Com.Fubei.Api.OpenApi.projitems*{15f22972-a7a0-41af-8896-e76a87faaa0f}*SharedItemsImports = 13
+		Com.Fubei.Api.OpenApi\Com.Fubei.Api.OpenApi.projitems*{a986588a-a02a-4149-ad5b-81d4b40854dc}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A986588A-A02A-4149-AD5B-81D4B40854DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A986588A-A02A-4149-AD5B-81D4B40854DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A986588A-A02A-4149-AD5B-81D4B40854DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A986588A-A02A-4149-AD5B-81D4B40854DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E2D987F-BE0B-4184-879E-40EEF6B83719}
+	EndGlobalSection
+EndGlobal

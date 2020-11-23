@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>15f22972-a7a0-41af-8896-e76a87faaa0f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Com.Fubei.Api.OpenApi</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\FubeiOpenApiFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\IFubeiMerchantApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Request\OrderPayParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Request\OrderQueryParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Request\OrderScanParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Response\OrderQueryEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Response\OrderScanResultEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Response\StoreCategoryEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Response\OrderPayResultEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\OpenApiAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\OpenApiResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IOpenApiStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\HttpClient\HttpClientFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\Interceptor\FubeiOpenApiInterceptor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Biz\AgentApi\" />
+  </ItemGroup>
+</Project>
