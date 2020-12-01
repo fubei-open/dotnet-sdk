@@ -47,7 +47,7 @@ namespace Com.Illuminati.Galileo.Net.HttpClient.Impl
             // 请求的追踪ID，同一个请求和响应的追踪ID是相同的
             var traceId = TraceIdGenerator.NewTraceId();
             var remark =
-                $"HttpClient=RestSharp^TraceId={traceId}^Host={GalileoApiConfig.Instance.LoggerProcMaskHost?.Invoke(host) ?? host}^Method={attr.Method}";
+                $"HttpClient=RestSharp^TraceId={traceId}^Host={GalileoApiConfig.Instance.LoggerProcMaskHost?.Invoke(host) ?? host}^Method={attr.Method}^Path={attr.Path}";
             switch (attr.Format)
             {
                 // json格式，CashierApi/开放平台使用

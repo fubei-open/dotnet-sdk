@@ -1,37 +1,126 @@
-﻿using Com.Fubei.Api.OpenApi;
-using Com.Illuminati.Galileo;
+﻿using Com.Illuminati.Galileo;
 using Com.Illuminati.Galileo.Biz;
 using Com.Illuminati.Galileo.Biz.MerchantApi.Model.Request;
 using Com.Illuminati.Galileo.Foundation;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
+using Com.Fubei.Api.OpenApi.Biz.AgentApi.Model.Request;
 using Com.Fubei.Api.OpenApi.Biz.MerchantApi.Model.Request;
 
 namespace OpenApiDemo
 {
     class Program
     {
+        // 商户维度
         public const string MerchantApiAppId = "20170607085534749364";
         public const string MerchantAppSecret = "1809d9615714ab8fdc90d0d838a0f2e1";
         public const int StoreId = 145827;
 
+        // 代理商维度，如果是商户维护调用（使用AppId和AppSecret）则可不配置
+        public const string AgentVendorSn = "2018113015321682303a";
+        public const string AgentVendorSecret = "1b2da5600e53fde3c657a2652839b84e";
+        // 代理商维度调用必须指定MerchantId和StoreId
+        public const int AStoreId = StoreId;
+        public const int AMerchantId = 189160;
+
+        // 当使用开放平台2.0接口时，是否使用代理商维度来调用
+        private const bool IsAgent = false;
+
+
         static void Main(string[] args)
         {
-            // 初始化客户端网络库
+            // 初始化客户端网络库，和OpenApi相关的参数
             InitGalileo();
 
-            // 定额码
-            OrderScan();
+            // 开放平台2.0付呗码
+            //AOrderPay();
+            
+            // 创建聚合码
+            CreateFixedQrcode();
 
-            OrderPay();
+            //// 定额码
+            //OrderScan();
+
+            //// 开放平台1.0支付
+            //OrderPay();
 
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// 2020-12-01 新增，开放平台2.0 支付接口
+        /// </summary>
+        private static void AOrderPay()
+        {
+            var param = new AOrderPayParam
+            {
+                MerchantOrderSn = $"{DateTime.Now:yyyyMMddHHmmss}000000001",
+                StoreId = StoreId,
+                // 这个字段，如果是商户级别调用，则可不传
+                MerchantId = AMerchantId,
+                TotalAmount = 0.01m,
+                AuthCode = "134779556436361053"
+            };
+            try
+            {
+                var response = FubeiOpenApiFactory.AgentApi.OrderPay(param);
+                Console.WriteLine($"付款码支付结果: {response.ToJson()}");
+
+                // 订单状态：USERPAYING需要继续查询订单状态
+                var tradeState = response.OrderStatus;
+                // 重试次数，请根据实际情况进行
+                var retryCount = 30;
+                // 当订单状态是USERPAYING
+                while (Equals("USERPAYING", tradeState) && retryCount > 0)
+                {
+                    --retryCount;
+                    var queryResponse = FubeiOpenApiFactory.AgentApi.OrderQuery(new AOrderQueryParam
+                    {
+                        // 这个字段，如果是商户级别调用，则可不传
+                        MerchantId = AMerchantId,
+                        MerchantOrderSn = response.MerchantOrderSn
+                    });
+                    tradeState = queryResponse.OrderStatus;
+                    Console.WriteLine($"付款码支付结果: {queryResponse}");
+                    // 等待1秒钟后重新查询
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"请求失败: {ex}");
+            }
+        }
+
+        private static void CreateFixedQrcode()
+        {
+            var param = new ACreateFixedQrCodeParam
+            {
+                // 代理商级别调用为必填参数，商户级别调用为非必填参数
+                //MerchantId = AMerchantId,
+                StoreId = StoreId,
+                MerchantOrderSn = $"{DateTime.Now:yyyyMMddHHmmss}000000001",
+                TotalAmount = 0.1m,
+                // TODO: 必须填入SubAppId
+                SubAppId = "",
+                // 二维码超时时间
+                ExpiredTime = 600
+            };
+            try
+            {
+                var resp = FubeiOpenApiFactory.AgentApi.CreateFixedQrcode(param);
+                if (resp == null)
+                {
+                    Console.WriteLine($"\n\n定额码创建失败！！！\n\n");
+                    return;
+                }
+                Console.WriteLine($"\n\n定额码：{resp.QrcodeUrl}, 订单号：{resp.MerchantOrderSn}\n\n");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"请求失败: {ex}");
+            }
         }
 
         /// <summary>
@@ -112,16 +201,43 @@ namespace OpenApiDemo
         /// </summary>
         private static void InitGalileo()
         {
-            // 设置AppKey和AppSecret
+            // 设置AppId和AppSecret
+            // 这里是开放平台1.0的参数
             GalileoApiConfig.Instance.Register(new GalileoApiConfig.ApiConfig
             {
                 AppId = MerchantApiAppId,
                 AppSecret = MerchantAppSecret
             }, GalileoApiConfig.Category.MerchantApi);
 
+            // 根据设置判断，设置不同的接口参数
+            if (IsAgent)
+            {
+                // 设置VendorSn和VendorSn
+                // 这里是开放平台2.0的参数
+                GalileoApiConfig.Instance.Register(new GalileoApiConfig.ApiConfig
+                {
+                    AppId = "",
+                    AppSecret = "",
+                    VendorSn = AgentVendorSn,
+                    VendorSecret = AgentVendorSecret
+                }, GalileoApiConfig.Category.AgentApi);
+            }
+            else
+            {
+                // 设置AppId和AppSecret
+                // 这里是开放平台2.0的参数
+                GalileoApiConfig.Instance.Register(new GalileoApiConfig.ApiConfig
+                {
+                    AppId = MerchantApiAppId,
+                    AppSecret = MerchantAppSecret,
+                    VendorSn = "",
+                    VendorSecret = ""
+                }, GalileoApiConfig.Category.AgentApi);
+            }
+
             // ***可选*** 设置付呗开放平台接口地址
             //OpenApiStorage.Instance.OpenApiHost = "http://shq-api.51fubei.com";
-            
+
             // 忽略http错误
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
             

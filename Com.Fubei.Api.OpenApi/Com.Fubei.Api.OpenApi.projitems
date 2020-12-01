@@ -9,6 +9,15 @@
     <Import_RootNamespace>Com.Fubei.Api.OpenApi</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\IFubeiAgentApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\AgentApiAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\AOrderPayParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\AOrderQueryParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\ACreateFixedQrCodeParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Response\ACreateFixedQrcodeResultEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Response\AOrderPayResultEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Response\AOrderQueryResultEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\AEntities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\FubeiOpenApiFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\IFubeiMerchantApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Request\OrderPayParam.cs" />
@@ -23,8 +32,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)IOpenApiStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Net\HttpClient\HttpClientFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Net\Interceptor\FubeiOpenApiInterceptor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Biz\AgentApi\" />
   </ItemGroup>
 </Project>

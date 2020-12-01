@@ -17,15 +17,16 @@ namespace Com.Illuminati.Galileo.Model
             this.SignMethod = ApiConstants.Md5;
         }
 
-        public ApiRequestParam(ApiAttribute attr, string appId)
+        public ApiRequestParam(ApiAttribute attr)
         {
             this.Nonce = RandomStringUtil.NewRandomString(16);
             this.Method = attr.Method;
             this.SignMethod = attr.SignMethod;
-            this.AppId = appId;
             this.Format = attr.Format;
             this.Version = attr.Version;
         }
+
+        public string VendorSn { get; set; }
 
         public string AppId { get; set; }
 

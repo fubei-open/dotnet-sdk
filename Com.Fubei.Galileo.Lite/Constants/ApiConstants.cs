@@ -38,6 +38,8 @@ namespace Com.Illuminati.Galileo.Constants
 
         public const string AppId = "app_id";
 
+        public const string VendorSn = "vendor_sn";
+
         public const string Format = "format";
 
         public const string SignMethod = "sign_method";

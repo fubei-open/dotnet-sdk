@@ -43,8 +43,25 @@ namespace Com.Illuminati.Galileo
 
         public class ApiConfig
         {
+            /// <summary>
+            /// 开放平台1.0、2.0商户维度 AppId
+            /// </summary>
             public string AppId { get; set; }
+
+            /// <summary>
+            /// 开放平台2.0商户维度 AppSecret
+            /// </summary>
             public string AppSecret { get; set; }
+
+            /// <summary>
+            /// 开放平台2.0代理商维度 VendorSn
+            /// </summary>
+            public string VendorSn { get; set; }
+
+            /// <summary>
+            /// 开放平台2.0代理商维度 VendorSecret
+            /// </summary>
+            public string VendorSecret { get; set; }
         }
 
         private static string GetIdentifier(string key)

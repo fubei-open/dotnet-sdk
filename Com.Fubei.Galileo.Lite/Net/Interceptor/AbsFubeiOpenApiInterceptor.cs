@@ -31,15 +31,20 @@ namespace Com.Illuminati.Galileo.Net.Interceptor
             }
             var appConfig = GalileoApiConfig.Instance.GetApiConfig(attr.Category) ?? new GalileoApiConfig.ApiConfig();
 
-            var param = new ApiRequestParam(attr, appConfig.AppId)
+            var param = new ApiRequestParam(attr)
             {
+                AppId = appConfig.AppId,
+                VendorSn = appConfig.VendorSn,
                 BizContent = table.ContainsKey(ApiConstants.JsonTag)
                     ? table[ApiConstants.JsonTag].ToString()
                     : JsonConvert.SerializeObject(table, ApiConstants.JsonSerializerSettings)
             };
 
             var paramList = ConvertToKeyValueList(param, attr);
-            var signature = SignatureGenerator.GetSign(paramList, p => p + appConfig.AppSecret);
+            // 根据vendorSn是否为空来确定使用AppSecret或者VendorSecret
+            var secret = string.IsNullOrEmpty(appConfig.VendorSn) ? appConfig.AppSecret : appConfig.VendorSecret;
+
+            var signature = SignatureGenerator.GetSign(paramList, p => p + secret);
             param.Signature = signature.Signature;
             paramList.Add(new KeyValuePair<string, object>(ApiConstants.Sign, signature.Signature));
 
@@ -58,9 +63,12 @@ namespace Com.Illuminati.Galileo.Net.Interceptor
 
         protected virtual List<KeyValuePair<string, object>> ConvertToKeyValueList(ApiRequestParam rp, Attribute attr)
         {
+            var rk = string.IsNullOrEmpty(rp.VendorSn) ? ApiConstants.AppId : ApiConstants.VendorSn;
+            var rs = string.IsNullOrEmpty(rp.VendorSn) ? rp.AppId : rp.VendorSn;
+
             return new List<KeyValuePair<string, object>>
             {
-                new KeyValuePair<string, object>(ApiConstants.AppId, rp.AppId),
+                new KeyValuePair<string, object>(rk, rs),
                 new KeyValuePair<string, object>(ApiConstants.Format, rp.Format),
                 new KeyValuePair<string, object>(ApiConstants.SignMethod, rp.SignMethod),
                 new KeyValuePair<string, object>(ApiConstants.Method, rp.Method),

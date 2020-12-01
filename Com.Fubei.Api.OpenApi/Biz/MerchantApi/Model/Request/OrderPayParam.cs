@@ -85,7 +85,7 @@ namespace Com.Illuminati.Galileo.Biz.MerchantApi.Model.Request
         public string GoodsTag { get; set; }
 
         [JsonProperty("detail")] 
-        public GoodDetailEntity Detail { get; set; }
+        public SwipeGoodDetailEntity Detail { get; set; }
 
         [JsonProperty("sub_appid")] 
         public string SubAppId { get; set; }
