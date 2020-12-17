@@ -8,18 +8,21 @@ Imports Com.Fubei.Api.OpenApi.Biz.V2.Model.Request
 
 Class Program
     ' 商户维度
+    ' TODO:在此处填写分配的AppId和AppSecret以及StoreId
+    
     Public Const MerchantApiAppId As String = ""
     Public Const MerchantAppSecret As String = ""
     Public Const StoreId As Integer = 0
 
     ' 代理商维度调用必须指定MerchantId和StoreId
+    ' TODO:在此处填写分配的VendorSn和VendorSecret以及StoreId和MerchantId
     Public Const AgentVendorSn As String = ""
     Public Const AgentVendorSecret As String = ""
     Public Const AStoreId As Integer = StoreId
     Public Const AMerchantId As Integer = 0
 
-    ' 当使用开放平台2.0接口时，是否使用代理商维度来调用
-    ' 配置为false则使用商户维护调用
+    ' TODO:当使用开放平台2.0接口时，是否使用代理商维度来调用
+    ' TODO:配置为false则使用商户维护调用
     Private Const IsAgent As Boolean = False
 
     Public Shared Sub Main(ByVal args As String())
@@ -41,6 +44,7 @@ Class Program
     ' 2020-12-01 新增，开放平台2.0 支付接口
     Private Shared Sub AOrderPay()
         ' MerchantId这个字段，如果是商户级别调用，则可不传
+        ' 需要在这里自定义商户单号
         Dim param = New AOrderPayParam With {
             .MerchantOrderSn = $"{DateTime.Now}000000001",
             .StoreId = StoreId,
@@ -180,13 +184,13 @@ Class Program
             }, GalileoApiConfig.Category.AgentApi)
         End If
 
-        ' ***可选*** 设置付呗开放平台接口地址,如果是XP系统，需要启用这行
+        ' TODO: ***可选*** 设置付呗开放平台接口地址,如果是XP系统，需要启用这行
         'OpenApiStorage.Instance.OpenApiHost = "http://shq-api.51fubei.com"
 
-        ' 忽略http错误
+        ' TODO: 忽略https 证书错误
         ServicePointManager.ServerCertificateValidationCallback = Function(sender, certificate, chain, sslPolicyErrors) True
 
-        ' 接管日志输出
+        ' TODO: 接管日志输出
         AddHandler GalileoLogger.Instance.Logger, Function(level, log)
                                                       Select Case level
                                                           Case GalileoLogger.Level.Trace, GalileoLogger.Level.Debug
@@ -202,7 +206,7 @@ Class Program
                                                       End Select
                                                   End Function
 
-        ' **********可选*********定义TraceId生成规则，（如不定义则按照默认规则生成）
+        ' TODO: **********可选*********定义TraceId生成规则，（如不定义则按照默认规则生成）
         Dim n = 0
         GalileoApiConfig.Instance.GenerateTraceId = Function() $"{DateTime.Now}_{System.Threading.Interlocked.Increment(n)}"
     End Sub
