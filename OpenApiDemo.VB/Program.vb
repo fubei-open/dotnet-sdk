@@ -33,6 +33,8 @@ Class Program
         AOrderPay()
 
         ' 订单支付(开放平台1.0接口)
+        OrderPay()
+
         Console.ReadLine()
     End Sub
 
@@ -44,7 +46,7 @@ Class Program
             .StoreId = StoreId,
             .MerchantId = AMerchantId,
             .TotalAmount = 0.01D,
-            .AuthCode = "134778135788159462"
+            .AuthCode = "134769431064701535"
         }
 
         Try
