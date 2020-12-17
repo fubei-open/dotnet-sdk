@@ -1,28 +1,28 @@
 ﻿using Com.Illuminati.Galileo;
 using Com.Illuminati.Galileo.Biz;
-using Com.Illuminati.Galileo.Biz.MerchantApi.Model.Request;
 using Com.Illuminati.Galileo.Foundation;
 using System;
 using System.Net;
 using System.Threading;
 using Com.Fubei.Api.OpenApi.Biz.AgentApi.Model.Request;
 using Com.Fubei.Api.OpenApi.Biz.MerchantApi.Model.Request;
+using Com.Fubei.Api.OpenApi.Biz.MerchantApi.Request;
 
 namespace OpenApiDemo
 {
     class Program
     {
         // 商户维度
-        public const string MerchantApiAppId = "20170607085534749364";
-        public const string MerchantAppSecret = "1809d9615714ab8fdc90d0d838a0f2e1";
-        public const int StoreId = 145827;
+        public const string MerchantApiAppId = "";
+        public const string MerchantAppSecret = "";
+        public const int StoreId = 0;
 
         // 代理商维度，如果是商户维护调用（使用AppId和AppSecret）则可不配置
-        public const string AgentVendorSn = "2018113015321682303a";
-        public const string AgentVendorSecret = "1b2da5600e53fde3c657a2652839b84e";
+        public const string AgentVendorSn = "";
+        public const string AgentVendorSecret = "";
         // 代理商维度调用必须指定MerchantId和StoreId
         public const int AStoreId = StoreId;
-        public const int AMerchantId = 189160;
+        public const int AMerchantId = 0;
 
         // 当使用开放平台2.0接口时，是否使用代理商维度来调用
         private const bool IsAgent = false;

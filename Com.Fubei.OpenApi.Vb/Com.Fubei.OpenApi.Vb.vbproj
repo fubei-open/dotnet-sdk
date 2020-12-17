@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B92C227-D04C-4FC2-9602-0B4F0EF5BB3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Com.Fubei.Api.OpenApi</RootNamespace>
+    <AssemblyName>Com.Fubei.OpenApi.Vb</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Com.Fubei.OpenApi.Vb.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Com.Fubei.OpenApi.Vb.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\demo\dotnet4\OpenApiDemo-同步调用\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\demo\dotnet4\OpenApiDemo-同步调用\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\demo\dotnet4\OpenApiDemo-同步调用\lib\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Biz\AgentApi\AgentApiAttribute.vb" />
+    <Compile Include="Biz\AgentApi\IFubeiAgentApi.vb" />
+    <Compile Include="Biz\AgentApi\Model\AEntities.vb" />
+    <Compile Include="Biz\AgentApi\Model\Request\ACreateFixedQrCodeParam.vb" />
+    <Compile Include="Biz\AgentApi\Model\Request\AOrderPayParam.vb" />
+    <Compile Include="Biz\AgentApi\Model\Request\AOrderQueryParam.vb" />
+    <Compile Include="Biz\AgentApi\Model\Response\ACreateFixedQrcodeResultEntity.vb" />
+    <Compile Include="Biz\AgentApi\Model\Response\AOrderPayResultEntity.vb" />
+    <Compile Include="Biz\AgentApi\Model\Response\AOrderQueryResultEntity.vb" />
+    <Compile Include="Biz\FubeiOpenApiFactory.vb" />
+    <Compile Include="Biz\MerchantApi\IFubeiMerchantApi.vb" />
+    <Compile Include="Biz\MerchantApi\Model\Request\OrderPayParam.vb" />
+    <Compile Include="Biz\MerchantApi\Model\Request\OrderQueryParam.vb" />
+    <Compile Include="Biz\MerchantApi\Model\Request\OrderScanParam.vb" />
+    <Compile Include="Biz\MerchantApi\Model\Response\OrderPayResultEntity.vb" />
+    <Compile Include="Biz\MerchantApi\Model\Response\OrderQueryEntity.vb" />
+    <Compile Include="Biz\MerchantApi\Model\Response\OrderScanResultEntity.vb" />
+    <Compile Include="Biz\MerchantApi\OpenApiAttribute.vb" />
+    <Compile Include="Biz\OpenApiResponse.vb" />
+    <Compile Include="IOpenApiStorage.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Net\HttpClient\HttpClientFactory.vb" />
+    <Compile Include="Net\Interceptor\FubeiOpenApiInterceptor.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Com.Fubei.Galileo.Lite\Com.Fubei.Galileo.Lite.csproj">
+      <Project>{da295166-7ad0-47cd-99ea-df75c6e5dc45}</Project>
+      <Name>Com.Fubei.Galileo.Lite</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

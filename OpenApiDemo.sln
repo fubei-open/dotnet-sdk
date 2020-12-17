@@ -9,6 +9,10 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Com.Fubei.Api.OpenApi", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Fubei.Galileo.Lite", "Com.Fubei.Galileo.Lite\Com.Fubei.Galileo.Lite.csproj", "{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenApiDemo.VB", "OpenApiDemo.VB\OpenApiDemo.VB.vbproj", "{F767758B-5C8E-40FD-9340-C5C6BC823C09}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Com.Fubei.OpenApi.Vb", "Com.Fubei.OpenApi.Vb\Com.Fubei.OpenApi.Vb.vbproj", "{6B92C227-D04C-4FC2-9602-0B4F0EF5BB3A}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Com.Fubei.Api.OpenApi\Com.Fubei.Api.OpenApi.projitems*{15f22972-a7a0-41af-8896-e76a87faaa0f}*SharedItemsImports = 13
@@ -27,6 +31,14 @@ Global
 		{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA295166-7AD0-47CD-99EA-DF75C6E5DC45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F767758B-5C8E-40FD-9340-C5C6BC823C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F767758B-5C8E-40FD-9340-C5C6BC823C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F767758B-5C8E-40FD-9340-C5C6BC823C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F767758B-5C8E-40FD-9340-C5C6BC823C09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B92C227-D04C-4FC2-9602-0B4F0EF5BB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B92C227-D04C-4FC2-9602-0B4F0EF5BB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B92C227-D04C-4FC2-9602-0B4F0EF5BB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B92C227-D04C-4FC2-9602-0B4F0EF5BB3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

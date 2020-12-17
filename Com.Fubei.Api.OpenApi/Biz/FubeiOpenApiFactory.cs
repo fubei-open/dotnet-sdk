@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Castle.DynamicProxy;
 using Com.Fubei.Api.OpenApi.Biz.AgentApi;
-using Com.Illuminati.Galileo.Biz.MerchantApi;
+using Com.Fubei.Api.OpenApi.Biz.MerchantApi;
 using Com.Illuminati.Galileo.Net.Interceptor;
 
 namespace Com.Illuminati.Galileo.Biz

@@ -6,7 +6,7 @@ using System.Text;
 using Com.Illuminati.Galileo.Model;
 using Newtonsoft.Json.Linq;
 
-namespace Com.Illuminati.Galileo.Biz.MerchantApi
+namespace Com.Illuminati.Galileo.Biz
 {
     /// <summary>
     /// 通用返回结果

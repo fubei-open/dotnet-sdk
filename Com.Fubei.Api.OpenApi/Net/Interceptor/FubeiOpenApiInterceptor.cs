@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using Com.Fubei.Api.OpenApi;
 using Com.Illuminati.Galileo.Attr;
-using Com.Illuminati.Galileo.Biz.MerchantApi;
+using Com.Illuminati.Galileo.Biz;
 using Com.Illuminati.Galileo.Constants;
 using Com.Illuminati.Galileo.Exceptions;
 using Com.Illuminati.Galileo.Model;
 using Com.Illuminati.Galileo.Net.HttpClient;
-using Com.Illuminati.Galileo.Utils;
 using Newtonsoft.Json;
 
 namespace Com.Illuminati.Galileo.Net.Interceptor

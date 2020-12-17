@@ -1,7 +1,7 @@
 ﻿using Com.Illuminati.Galileo.Model;
 using Newtonsoft.Json;
 
-namespace Com.Illuminati.Galileo.Biz.MerchantApi.Model.Response
+namespace Com.Fubei.Api.OpenApi.Biz.MerchantApi.Model.Response
 {
     /// <summary>
     /// http://docs.51fubei.com/open-api/business/methods/storeCategory.html

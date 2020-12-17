@@ -5,7 +5,6 @@ using Com.Fubei.Api.OpenApi.Biz.AgentApi.Model.Request;
 using Com.Fubei.Api.OpenApi.Biz.AgentApi.Model.Response;
 using Com.Illuminati.Galileo.Attr;
 using Com.Illuminati.Galileo.Biz.MerchantApi;
-using Newtonsoft.Json.Linq;
 
 namespace Com.Fubei.Api.OpenApi.Biz.AgentApi
 {

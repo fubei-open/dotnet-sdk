@@ -5,10 +5,10 @@ using System.Text;
 using Com.Fubei.Api.OpenApi.Biz.MerchantApi.Model.Request;
 using Com.Fubei.Api.OpenApi.Biz.MerchantApi.Model.Response;
 using Com.Illuminati.Galileo.Attr;
-using Com.Illuminati.Galileo.Biz.MerchantApi.Model.Request;
-using Com.Illuminati.Galileo.Biz.MerchantApi.Model.Response;
+using Com.Illuminati.Galileo.Biz.MerchantApi;
+using Com.Fubei.Api.OpenApi.Biz.MerchantApi.Request;
 
-namespace Com.Illuminati.Galileo.Biz.MerchantApi
+namespace Com.Fubei.Api.OpenApi.Biz.MerchantApi
 {
     /// <summary>
     /// 商户API接口

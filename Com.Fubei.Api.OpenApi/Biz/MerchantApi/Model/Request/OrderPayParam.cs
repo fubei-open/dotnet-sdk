@@ -5,7 +5,7 @@ using System.Text;
 using Com.Illuminati.Galileo.Model;
 using Newtonsoft.Json;
 
-namespace Com.Illuminati.Galileo.Biz.MerchantApi.Model.Request
+namespace Com.Fubei.Api.OpenApi.Biz.MerchantApi.Request
 {
     /// <summary>
     /// 付款码支付接口

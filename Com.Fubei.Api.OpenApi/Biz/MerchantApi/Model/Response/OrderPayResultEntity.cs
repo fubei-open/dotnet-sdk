@@ -5,7 +5,7 @@ using System.Text;
 using Com.Illuminati.Galileo.Model;
 using Newtonsoft.Json;
 
-namespace Com.Illuminati.Galileo.Biz.MerchantApi.Model.Response
+namespace Com.Fubei.Api.OpenApi.Biz.MerchantApi.Model.Response
 {
     public class OrderPayResultEntity : BaseEntity
     {

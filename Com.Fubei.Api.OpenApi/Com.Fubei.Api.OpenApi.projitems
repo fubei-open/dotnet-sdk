@@ -28,7 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Response\StoreCategoryEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Response\OrderPayResultEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\OpenApiAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\OpenApiResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\OpenApiResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IOpenApiStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Net\HttpClient\HttpClientFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Net\Interceptor\FubeiOpenApiInterceptor.cs" />
