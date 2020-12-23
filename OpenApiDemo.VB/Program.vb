@@ -33,10 +33,16 @@ Class Program
         'CreateFixedQrcode()
 
         ' 订单支付(开放平台2.0接口)
-        AOrderPay()
+        'AOrderPay()
 
         ' 订单支付(开放平台1.0接口)
-        OrderPay()
+        'OrderPay()
+
+        ' 退款
+        AOrderRefund()
+
+        ' 退款订单查询
+        AOrderRefundQuery()
 
         Console.ReadLine()
     End Sub
@@ -46,11 +52,11 @@ Class Program
         ' MerchantId这个字段，如果是商户级别调用，则可不传
         ' 需要在这里自定义商户单号
         Dim param = New AOrderPayParam With {
-            .MerchantOrderSn = $"{DateTime.Now}000000001",
+            .MerchantOrderSn = $"{DateTime.Now:yyyyMMddHHmmss}000000001",
             .StoreId = StoreId,
             .MerchantId = AMerchantId,
-            .TotalAmount = 0.01D,
-            .AuthCode = "134769431064701535"
+            .TotalAmount = 1D,
+            .AuthCode = "134740165777916174"
         }
 
         Try
@@ -105,7 +111,7 @@ Class Program
         End Try
     End Sub
 
-    ' 付款码支付接口
+    ' 付款码支付接口（1.0接口）
     Private Shared Sub OrderPay()
 
         ' Type 支付方式[微信1/支付宝2/银联5]
@@ -140,7 +146,7 @@ Class Program
     End Sub
 
     ' 扫码支付接口
-    Public Shared Sub OrderScan()
+    Private Shared Sub OrderScan()
         Dim orderScanParam = New OrderScanParam With {
             .MerchantOrderSn = $"{DateTime.Now}000000001",
             .StoreId = StoreId,
@@ -156,6 +162,50 @@ Class Program
             Console.WriteLine($"用于微信支付的定额二维码：{response.QrCode}")
             Console.WriteLine()
             Console.WriteLine()
+        Catch ex As Exception
+            Console.WriteLine($"请求失败: {ex}")
+        End Try
+    End Sub
+
+    ' 订单退款 2020-12-23 新增
+    Private Shared Sub AOrderRefund()
+        ' TODO 需要退款的商户单号
+        Dim merchantOrderSn = "2020-12-23 14:10:06000000001"
+        ' TODO 商户指定的退款流水单号
+        Dim merchantRefundSn = $"R{DateTime.Now:yyyyMMddHHmmss}000001"
+        ' 退款金额
+        Dim refundAmount = 0.1
+        Dim refundParam = New ARefundOrderParam With {
+            .MerchantOrderSn = merchantOrderSn,
+            .MerchantRefundSn = merchantRefundSn,
+            .MerchantId = AMerchantId,
+            .RefundAmount = refundAmount
+        }
+
+        Try
+            Dim response = FubeiOpenApiFactory.AgentApi.OrderRefund(refundParam)
+            Console.WriteLine($"退款 请求成功: {response.ToJson()}")
+        Catch ex As Exception
+            Console.WriteLine($"请求失败: {ex}")
+        End Try
+    End Sub
+
+    ' 退款查询 2020-12-23 新增
+    Private Shared Sub AOrderRefundQuery() 
+        ' TODO 需要退款的商户单号
+        Dim refundSn As String = "20201223144814425366"
+        ' TODO 商户指定的退款流水单号
+        Dim merchantRefundSn As String = Nothing
+        
+        Dim queryRefundParam = new AQueryRefundParam()
+        queryRefundParam.MerchantId = AMerchantId
+        queryRefundParam.MerchantRefundSn = merchantRefundSn
+        queryRefundParam.RefundSn = refundSn
+
+        ' 以上二选一，目前使用refundSn进行查询
+        Try
+            Dim response = FubeiOpenApiFactory.AgentApi.OrderRefundQuery(queryRefundParam)
+            Console.WriteLine($"退款查询 请求成功: {response.ToJson()}")
         Catch ex As Exception
             Console.WriteLine($"请求失败: {ex}")
         End Try

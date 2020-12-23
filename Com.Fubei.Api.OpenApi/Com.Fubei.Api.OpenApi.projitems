@@ -14,10 +14,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\AOrderPayParam.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\AOrderQueryParam.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\ACreateFixedQrCodeParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\AQueryRefundParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Request\ARefundOrderParam.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Response\ACreateFixedQrcodeResultEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Response\AOrderPayResultEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Response\AOrderQueryResultEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\AEntities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Biz\AgentApi\Model\Response\ARefundOrderEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\FubeiOpenApiFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\IFubeiMerchantApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Biz\MerchantApi\Model\Request\OrderPayParam.cs" />

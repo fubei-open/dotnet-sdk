@@ -55,4 +55,27 @@ Namespace Biz.V2.Model
         <JsonProperty("amount")>
         Public Property Amount As Decimal
     End Class
+
+
+    Public Class ASignPackageEntity
+        Inherits BaseEntity
+
+        <JsonProperty("appId")>
+        Public Property AppId As String
+
+        <JsonProperty("timeStamp")>
+        Public Property TimeStamp As String
+
+        <JsonProperty("nonceStr")>
+        Public Property NonceStr As String
+
+        <JsonProperty("package")>
+        Public Property Package As String
+
+        <JsonProperty("signType")>
+        Public Property SignType As String
+
+        <JsonProperty("paySign")>
+        Public Property PaySign As String
+    End Class
 End Namespace
